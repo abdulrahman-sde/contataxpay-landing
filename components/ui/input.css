@@ -1,0 +1,12 @@
+/*
+ * Input / Textarea — rules that belong to components/ui/input.tsx.
+ * A field drawn with white text sits on a dark surface (accountant / assistant screens): its hint
+ * text must be light too, or "Search clients…" disappears into the background.
+ */
+:is(.input, textarea)[class*="text-white"] {
+  --ui-field-placeholder: rgb(148 163 184); /* slate-400 */
+}
+:is(.input, textarea)[class*="text-white"]::placeholder {
+  color: rgb(148 163 184) !important;
+  opacity: 1;
+}

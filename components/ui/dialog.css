@@ -1,0 +1,8 @@
+/*
+ * Dialog windows — rules that belong to components/ui/dialog.tsx.
+ * Dark windows (accountant / assistant screens: bg-slate-7/8/900, bg-gray-900) keep their own dark
+ * header: the standard lavender title band is for light windows only, a white title on it is unreadable.
+ */
+[data-dialog-standard]:is([class*="bg-slate-7"], [class*="bg-slate-8"], [class*="bg-slate-9"], [class*="bg-gray-9"]) > .dialog-header {
+  background: transparent !important;
+}

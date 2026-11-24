@@ -1,0 +1,48 @@
+/* Keyframes for the ported design-mine (shadcn studio) illustrations. */
+@keyframes illu-beam-dash-move {
+  from { stroke-dashoffset: var(--beam-dash-from, 300); }
+  to { stroke-dashoffset: var(--beam-dash-to, 0); }
+}
+@keyframes illu-ripple-expand {
+  0% { transform: scale(0.35); opacity: 0.55; }
+  100% { transform: scale(1); opacity: 0; }
+}
+@keyframes illu-scan-line {
+  0% { transform: translateY(-1.75rem); opacity: 0; }
+  15% { opacity: 1; }
+  50% { transform: translateY(1.75rem); }
+  85% { opacity: 1; }
+  100% { transform: translateY(-1.75rem); opacity: 0; }
+}
+@keyframes illu-ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+@keyframes illu-reveal { to { opacity: 1; } }
+
+.illu-beam-dash-move { animation: illu-beam-dash-move var(--duration, 5s) linear infinite; }
+.illu-ripple-expand { animation: illu-ripple-expand var(--duration, 3s) cubic-bezier(0, 0, 0.2, 1) infinite backwards; }
+.illu-scan-line { animation: illu-scan-line 2.4s ease-in-out infinite; }
+.illu-ping { animation: illu-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite; }
+
+/* Each scene is drawn at full size and scaled with `transform` (not the `scale` property), so the
+   beam measurement can undo it exactly. Small on phones (2 per row), full size from lg. */
+.illu-scale { transform: scale(0.34); }
+@media (min-width: 640px) { .illu-scale { transform: scale(0.48); } }
+@media (min-width: 1024px) { .illu-scale { transform: scale(0.6); } }
+/* Wide, flat scenes (tax declaration) keep a little more size so their labels stay readable. */
+.illu-scale.illu-scale-wide { transform: scale(0.4); }
+@media (min-width: 640px) { .illu-scale.illu-scale-wide { transform: scale(0.58); } }
+@media (min-width: 1024px) { .illu-scale.illu-scale-wide { transform: scale(0.72); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .illu-root, .illu-root * { animation-play-state: paused !important; }
+}
+
+/* OCR: the scan bar travels top -> bottom, fades out, starts again from the top. */
+@keyframes illu-scan-down {
+  0% { transform: translateY(0); opacity: 0; }
+  8% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { transform: translateY(var(--scan-distance, 150px)); opacity: 0; }
+}
+.illu-scan-down { animation: illu-scan-down 2.8s cubic-bezier(0.45, 0, 0.55, 1) infinite; }

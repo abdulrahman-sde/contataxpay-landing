@@ -1,26 +1,310 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================================================
+   Design tokens — copied from the app (Tax-Final, branch feature/ui-standardization,
+   probaserver06.08.25/app/globals.css). Same names and values, so the landing and the
+   app share one design system: change a token here (e.g. --btn-primary) and every
+   shadcn component and `primary` utility on the landing follows.
+   When the landing moves back into the app, drop this block: the app already has it.
+   ========================================================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Corner radius scale: the only radii the UI uses. */
+  --radius-sm: 6px;
+  /* Form fields: same tokens as the app (app/globals.css, --ui-field-*). */
+  --ui-field-h: 40px;
+  --ui-field-radius: var(--radius-control);
+  --ui-field-border-w: 2px;
+  --ui-field-border: rgba(0, 119, 182, 0.3);
+  --ui-field-border-hover: rgba(0, 119, 182, 0.55);
+  --ui-field-border-focus: #0077b6;
+  --ui-field-bg: rgba(255, 255, 255, 1);
+  --ui-field-bg-disabled: #f3f4f6;
+  --ui-field-ink: #111827;
+  --ui-field-placeholder: rgba(0, 0, 0, 0.6);
+  --radius-control: 12px;
+  --radius-panel: 16px;
+  --radius-surface: 20px;
+
+  /* Elevation */
+  --card-shadow: 0 1px 2px rgba(15, 23, 42, 0.05), 0 8px 24px -6px rgba(15, 23, 42, 0.10);
+  --card-shadow-hover: 0 2px 4px rgba(15, 23, 42, 0.06), 0 14px 32px -8px rgba(15, 23, 42, 0.16);
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-overlay: 0 4px 12px -4px rgba(15, 23, 42, 0.08), 0 16px 40px -12px rgba(15, 23, 42, 0.22);
+
+  /* shadcn base colours (HSL channels) */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 3.9%;
+  --secondary: 0 0% 96.1%;
+  --secondary-foreground: 0 0% 9%;
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+  --accent: 0 0% 96.1%;
+  --accent-foreground: 0 0% 9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --radius: 0.5rem;
+
+  /* Buttons — single source of truth for every button colour and shape. */
+  --btn-radius: var(--radius-control);
+  --btn-height: 40px;
+  --btn-padding-y: 12px;
+  --btn-padding-x: 16px;
+  --btn-gap: 8px;
+  --btn-weight: 500;
+  --btn-active-scale: 0.95;
+  --btn-transition: background-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  --btn-font-family: Inter, system-ui, sans-serif;
+  --btn-font-size: 0.875rem;
+  --btn-font-size-sm: 0.875rem;
+  --btn-link-font-size: 1rem;
+  --btn-link-weight: 400;
+  --btn-link-line-height: 1.5rem;
+  --btn-link-ink: var(--btn-primary);
+
+  --btn-primary: #3563e9; /* THE brand colour: change only this line to rebrand every primary surface */
+  --btn-primary-hover: color-mix(in srgb, var(--btn-primary) 84%, #000000);
+  --btn-primary-disabled: color-mix(in srgb, var(--btn-primary) 42%, #ffffff);
+  --btn-primary-ink: #ffffff;
+  --btn-primary-gradient: linear-gradient(0deg, var(--btn-primary), var(--btn-primary));
+  --btn-primary-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  --btn-secondary: #ffffff;
+  --btn-secondary-hover: #f6f8ff;
+  --btn-secondary-ink: var(--btn-primary);
+  --btn-secondary-border: #e2e8f0;
+  --btn-secondary-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 3px 8px -3px color-mix(in srgb, var(--btn-primary) 22%, transparent);
+
+  --btn-danger: #dc2626;
+  --btn-danger-hover: #b91c1c;
+  --btn-danger-ink: #ffffff;
+  --btn-success: #16a34a;
+  --btn-success-hover: #15803d;
+  --btn-success-ink: #ffffff;
+  --btn-warning: #d97706;
+  --btn-warning-hover: #b45309;
+  --btn-warning-ink: #ffffff;
+  --btn-outline-border: #e2e8f0;
+  --btn-neutral-hover: #f1f5f9;
+
+  --cta-attention: #f59e0b;
+  --cta-attention-hover: #d97706;
+  --cta-attention-ink: #451a03;
+  --cta-attention-tint: #fef3c7;
+  --btn-attention: var(--cta-attention);
+  --btn-attention-hover: var(--cta-attention-hover);
+  --btn-attention-ink: var(--cta-attention-ink);
 }
 
+/* The app's tailwind.config.ts, expressed as a Tailwind v4 theme. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --breakpoint-xs: 475px;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  /* The brand colour: bg-primary / text-primary / border-primary all read --btn-primary. */
+  --color-primary: var(--tw-primary, var(--btn-primary));
+  --color-primary-hover: var(--tw-primary-hover, var(--btn-primary-hover));
+  --color-primary-foreground: var(--tw-primary-ink, var(--btn-primary-ink));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: var(--tw-primary, var(--btn-primary));
+
+  /* One radius scale: lg/xl are the control radius, md/sm the small radius (as in the app). */
+  --radius-md: var(--radius-sm);
+  --radius-lg: var(--radius-control);
+  --radius-xl: var(--radius-control);
+  --radius-2xl: var(--radius-panel);
+  --radius-3xl: var(--radius-surface);
+  --radius-control: var(--radius-control);
+  --radius-panel: var(--radius-panel);
+  --radius-surface: var(--radius-surface);
+
+  /* Shadows come from the elevation tokens above. */
+  --shadow-sm: var(--shadow-xs);
+  --shadow-md: var(--card-shadow);
+  --shadow-lg: var(--card-shadow-hover);
+  --shadow-xl: var(--shadow-overlay);
+  --shadow-2xl: var(--shadow-overlay);
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  @keyframes marquee {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+    }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+    }
   }
 }
 
+@theme {
+  /* Text sizes with the app's (Tailwind v3) fixed line heights. v4 uses ratios instead, which grow
+     the line height when a size class is combined with a custom size (text-3xl lg:text-[36px]). */
+  --text-xs--line-height: 1rem;
+  --text-sm--line-height: 1.25rem;
+  --text-base--line-height: 1.5rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl--line-height: 1.75rem;
+  --text-2xl--line-height: 2rem;
+  --text-3xl--line-height: 2.25rem;
+  --text-4xl--line-height: 2.5rem;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  /* Tailwind v4 dropped the pointer cursor on buttons; the app (Tailwind v3) still has it. */
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/* ---- Typography, app-wide (from the app's globals.css) ---- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-inter), Inter, system-ui, sans-serif;
+}
+button, input, select, textarea { font-family: inherit; }
+/* Landing headings keep the weight set on them (medium). The app forces 600; left out on purpose. */
+/* Inter at large sizes needs only a hint of negative tracking; small headings stay at 0. */
+h1 { letter-spacing: -0.012em !important; }
+h2, h3, h4, h5, h6 { letter-spacing: -0.005em !important; }
+
+/* ---- Button roles: components/ui/button.tsx resolves every variant to one of these ---- */
+.btn {
+  font-family: var(--btn-font-family);
+  font-weight: var(--btn-weight) !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+.btn.btn-md,
+.btn.btn-lg { font-size: var(--btn-font-size) !important; }
+.btn.btn-sm { font-size: var(--btn-font-size-sm) !important; }
+
+.btn-primary {
+  border: none;
+  border-radius: var(--btn-radius);
+  background-color: var(--btn-primary);
+  background-image: var(--btn-primary-gradient);
+  color: var(--btn-primary-ink);
+  font-weight: var(--btn-weight);
+  box-shadow: var(--btn-primary-shadow);
+  transition: var(--btn-transition);
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--btn-primary-hover);
+  color: var(--btn-primary-ink);
+  box-shadow: var(--btn-primary-shadow);
+}
+.btn-primary:active:not(:disabled) { transform: scale(var(--btn-active-scale)); }
+.btn-primary:disabled {
+  background-color: var(--btn-primary-disabled);
+  color: var(--btn-primary-ink);
+  box-shadow: none;
+}
+.btn-primary svg { color: var(--btn-primary-ink); }
+
+.btn-secondary {
+  border: 1px solid var(--btn-secondary-border);
+  border-radius: var(--btn-radius);
+  font-weight: var(--btn-weight);
+  box-shadow: var(--btn-secondary-shadow);
+  transition: var(--btn-transition);
+}
+.btn-secondary:hover:not(:disabled) { box-shadow: var(--btn-secondary-shadow); }
+.btn-secondary:active:not(:disabled) { transform: scale(var(--btn-active-scale)); }
+.btn-secondary:disabled { box-shadow: none; opacity: 0.6; }
+
+.btn-danger { background-color: var(--btn-danger); color: var(--btn-danger-ink); }
+.btn-danger:hover:not(:disabled) { background-color: var(--btn-danger-hover); color: var(--btn-danger-ink); }
+.btn-success { background-color: var(--btn-success); color: var(--btn-success-ink); }
+.btn-success:hover:not(:disabled) { background-color: var(--btn-success-hover); color: var(--btn-success-ink); }
+.btn-warning { background-color: var(--btn-warning); color: var(--btn-warning-ink); }
+.btn-warning:hover:not(:disabled) { background-color: var(--btn-warning-hover); color: var(--btn-warning-ink); }
+
+.btn-sm {
+  height: 32px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.btn-link {
+  font-family: var(--btn-font-family);
+  font-size: var(--btn-link-font-size);
+  font-weight: var(--btn-link-weight);
+  line-height: var(--btn-link-line-height);
+  color: var(--btn-link-ink);
+}
+
+.btn-attention {
+  background-color: var(--btn-attention);
+  color: var(--btn-attention-ink);
+  font-weight: var(--btn-weight);
+}
+.btn-attention:hover {
+  background-color: var(--btn-attention-hover);
+  color: var(--btn-attention-ink);
+}
+
+/* ==========================================================================
+   Landing page (from the app's app/landing/globals.css)
+   ========================================================================== */
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+body,
+.font-inter {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+}
+
+/* Pricing card background. */
+.gradient {
+  background: linear-gradient(0deg, rgba(248, 247, 252, 1) 0%, rgba(223, 220, 253, 1) 100%);
 }
