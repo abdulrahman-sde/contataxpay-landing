@@ -36,7 +36,7 @@ export function ServicesPage({ t }: { t: LandingDictionary }) {
       <ScrollToSectionOnLoad storageKey={SERVICES_SCROLL_TARGET_KEY} />
 
       {/* Hero */}
-      <section style={{ background: PAGE_GLOW }} className="px-4 pt-32 pb-14 sm:px-6 md:pt-40 md:pb-20">
+      <section style={{ background: PAGE_GLOW }} className="px-4 pt-40 pb-14 sm:px-6 sm:pt-44 md:pb-20 lg:pt-56">
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-3xl leading-tight font-medium tracking-tight text-slate-900 sm:text-4xl md:text-[2.75rem] md:leading-[1.15]">
             {s.title}

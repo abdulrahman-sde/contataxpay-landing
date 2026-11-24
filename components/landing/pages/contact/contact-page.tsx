@@ -44,13 +44,7 @@ export function ContactPage() {
     setSubmitting(true)
     setStatus(null)
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      })
-      const data = await res.json().catch(() => null)
-      if (!res.ok) throw new Error(data?.error || f.messages.error)
+      // UI only: nothing is sent, the form just shows its success state.
       setStatus({ ok: true, message: f.messages.success })
       setForm(EMPTY)
       setPrivacyAccepted(false)
@@ -92,7 +86,7 @@ export function ContactPage() {
   ]
 
   return (
-    <div style={{ background: PAGE_GLOW }} className="px-4 pt-32 pb-20 sm:px-6 md:pt-40 md:pb-28">
+    <div style={{ background: PAGE_GLOW }} className="px-4 pt-40 pb-20 sm:px-6 sm:pt-44 md:pb-28 lg:pt-56">
       <div className="mx-auto max-w-3xl text-center">
         <h1 className="text-3xl leading-tight font-medium tracking-tight text-slate-900 sm:text-4xl md:text-[2.75rem] md:leading-[1.15]">{c.title}</h1>
         <p className="mt-4 text-base text-slate-600 md:text-lg">{c.subtitle}</p>

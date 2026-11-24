@@ -3,7 +3,6 @@ import Link from "next/link"
 import { assets } from "@/lib/landing/assets"
 import type { LandingDictionary } from "@/lib/i18n/get-dictionary"
 import { contact, routes, sections } from "@/lib/landing/routes"
-import { SUBSCRIPTIONS_UI_ENABLED } from "@/lib/landing/feature-flags"
 import { CookieSettingsButton } from "../shared/cookie-settings-button"
 import { FraudReportLink } from "../shared/fraud-report-link"
 import { SectionLink } from "../shared/section-link"
@@ -93,13 +92,11 @@ export function SiteFooter({ t }: { t: LandingDictionary }) {
                   {footer.product.functions}
                 </SectionLink>
               </li>
-              {SUBSCRIPTIONS_UI_ENABLED && (
-                <li>
-                  <SectionLink section={sections.pricing} className={`${linkClass} cursor-pointer`}>
-                    {footer.product.pricing}
-                  </SectionLink>
-                </li>
-              )}
+              <li>
+                <SectionLink section={sections.pricing} className={`${linkClass} cursor-pointer`}>
+                  {footer.product.pricing}
+                </SectionLink>
+              </li>
               <li>
                 <Link href={routes.contact} className={linkClass}>
                   {footer.product.contact}

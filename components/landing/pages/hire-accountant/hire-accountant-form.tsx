@@ -44,7 +44,7 @@ const SELECT =
  * are the app's (landing page redesign/hire_accountant/page.js); fields use the app's Input.
  */
 export function HireAccountantForm() {
-  const { t, language } = useLanguage()
+  const { t } = useLanguage()
   const f = t.landing.hireAccountant.form
   const router = useRouter()
   const [step, setStep] = useState(1)
@@ -88,13 +88,7 @@ export function HireAccountantForm() {
     setSubmitting(true)
     setStatus(null)
     try {
-      const res = await fetch("/api/hire-accountant", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, currentStep: step, language }),
-      })
-      const data = await res.json().catch(() => null)
-      if (!res.ok) throw new Error(data?.error || f.messages.failedSubmit)
+      // UI only: nothing is sent, the form just shows its success state.
       setStatus({ ok: true, message: f.messages.success })
       setForm(EMPTY)
       setStep(1)

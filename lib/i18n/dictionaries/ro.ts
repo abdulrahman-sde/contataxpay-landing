@@ -157,6 +157,10 @@ export const ro: LandingDictionary = {
       "freeTitle": "ContaTaxPay – contabilitate și facturare gratuită",
       "freeDescription1": "ContaTaxPay este o platformă digitală de contabilitate și facturare complet gratuită, destinată gestionării financiare a companiilor, administrării documentelor, emiterii facturilor și organizării proceselor contabile. Accesul la aplicație și la consultanța digitală este gratuit.",
       "freeDescription2": "Serviciile de contabilitate prestate de contabili autorizați (contabil dedicat, preluare contabilitate, declarații fiscale, raportări oficiale, închideri de an, conformitate fiscală) sunt furnizate separat, exclusiv pe bază de ofertă personalizată, în funcție de domeniul de activitate, volumul de documente și complexitatea operațională.",
+      "paidBadge": "Ofertă personalizată",
+      "paidTitle": "Servicii de contabilitate prestate de contabili autorizați",
+      "freePrice": "0 €",
+      "paidPrice": "La cerere",
       "items": [
         {
           "title": "Consultanță",
@@ -362,8 +366,8 @@ export const ro: LandingDictionary = {
     },
     "hireAccountant": {
       "hero": {
-        "title": "Găsiți contabilul ideal pentru afacerea dvs.,",
-        "titleLine2": "oriunde",
+        "title": "Găsiți contabilul ideal pentru",
+        "titleLine2": "afacerea dvs., oriunde",
         "subtitle": "Conectați-vă cu contabili verificați, certificați și specializați",
         "subtitleLine2": "familiarizați cu legile locale, cerințele industriale și nevoile de afaceri.",
         "subtitleMobile": "Conectați-vă cu contabili verificați, certificați și specializați .",

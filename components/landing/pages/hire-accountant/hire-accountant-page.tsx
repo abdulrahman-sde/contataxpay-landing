@@ -29,7 +29,7 @@ export function HireAccountantPage({ t }: { t: LandingDictionary }) {
   return (
     <div className="font-inter">
       {/* Hero */}
-      <section style={{ background: PAGE_GLOW }} className="px-4 pt-32 pb-20 sm:px-6 md:pt-40 md:pb-24">
+      <section style={{ background: PAGE_GLOW }} className="px-4 pt-40 pb-20 sm:px-6 sm:pt-44 md:pb-24 lg:pt-56">
         <div className="mx-auto max-w-5xl text-center">
           <h1 className="text-3xl leading-tight font-medium tracking-tight text-slate-900 sm:text-4xl md:text-[2.75rem] md:leading-[1.15]">
             {h.hero.title} <br className="hidden md:block" />

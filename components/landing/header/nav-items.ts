@@ -1,6 +1,5 @@
 import type { LandingDictionary } from "@/lib/i18n/get-dictionary"
 import { routes, sections } from "@/lib/landing/routes"
-import { SUBSCRIPTIONS_UI_ENABLED } from "@/lib/landing/feature-flags"
 
 export type NavItem =
   | { kind: "link"; label: string; href: string }
@@ -14,7 +13,7 @@ export function getNavItems(t: LandingDictionary): NavItem[] {
     { kind: "link", label: t.nav.hireAccountant, href: routes.hireAccountant },
     { kind: "section", label: t.nav.features, section: sections.features },
     { kind: "services", label: t.nav.services },
-    ...(SUBSCRIPTIONS_UI_ENABLED ? [{ kind: "link" as const, label: t.nav.pricing, href: routes.pricing }] : []),
+    { kind: "link", label: t.nav.pricing, href: routes.pricing },
     { kind: "link", label: t.nav.contact, href: routes.contact },
   ]
 }

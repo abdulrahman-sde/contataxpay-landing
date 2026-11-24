@@ -157,6 +157,10 @@ export const en = {
       "freeTitle": "ContaTaxPay – Free Accounting and Invoicing",
       "freeDescription1": "ContaTaxPay is a fully free digital accounting and invoicing platform, designed for company financial management, document management, invoice issuance and organizing accounting processes. Access to the application and digital consulting is free.",
       "freeDescription2": "Accounting services provided by authorized accountants (dedicated accountant, accounting takeover, tax returns, official reporting, year-end closures, tax compliance) are provided separately, exclusively on the basis of a personalized quote, depending on the field of activity, volume of documents and operational complexity.",
+      "paidBadge": "Personalized quote",
+      "paidTitle": "Accounting services by authorized accountants",
+      "freePrice": "€0",
+      "paidPrice": "On request",
       "items": [
         {
           "title": "Consulting",
@@ -362,8 +366,8 @@ export const en = {
     },
     "hireAccountant": {
       "hero": {
-        "title": "Find the ideal accountant for your business,",
-        "titleLine2": "anywhere",
+        "title": "Find the ideal accountant for your",
+        "titleLine2": "business, anywhere",
         "subtitle": "Connect with verified, certified, and specialized accountants",
         "subtitleLine2": "familiar with local laws, industry requirements, and business needs.",
         "subtitleMobile": "Connect with verified, certified, and specialized accountants .",

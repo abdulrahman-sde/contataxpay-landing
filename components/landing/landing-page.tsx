@@ -1,8 +1,6 @@
 import type { Language } from "@/lib/i18n/config"
 import { getDictionary } from "@/lib/i18n/get-dictionary"
 import { LanguageProvider } from "@/lib/i18n/language-provider"
-import { SUBSCRIPTIONS_UI_ENABLED } from "@/lib/landing/feature-flags"
-import { FraudAlertPopup } from "./floating/fraud-alert-popup"
 import { WhatsAppButton } from "./floating/whatsapp-button"
 import { SiteFooter } from "./footer/site-footer"
 import { SiteHeader } from "./header/site-header"
@@ -26,7 +24,6 @@ export async function LandingPage({ language }: { language: Language }) {
 
   return (
     <LanguageProvider language={language} dictionary={t}>
-      <FraudAlertPopup />
       {/* overflow-x-clip (not hidden): hidden makes this a scroll container and breaks the sticky header. */}
       <div className="overflow-x-clip w-full">
         <SiteHeader />
@@ -36,7 +33,7 @@ export async function LandingPage({ language }: { language: Language }) {
           <FeaturesSection t={t} />
           <InvoicingSection t={t} />
           <ServicesSection t={t} />
-          {SUBSCRIPTIONS_UI_ENABLED && <PricingSection t={t} />}
+          <PricingSection t={t} />
           <div className="py-12 sm:py-16 md:py-20 lg:py-24">
             <TestimonialsSection t={t} />
             <FaqSection t={t} />

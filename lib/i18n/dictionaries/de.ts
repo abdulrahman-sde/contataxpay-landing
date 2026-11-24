@@ -157,6 +157,10 @@ export const de: LandingDictionary = {
       "freeTitle": "ContaTaxPay – Kostenlose Buchhaltung und Rechnungsstellung",
       "freeDescription1": "ContaTaxPay ist eine vollständig kostenlose digitale Plattform für Buchhaltung und Rechnungsstellung, die für die Finanzverwaltung von Unternehmen, die Dokumentenverwaltung, die Rechnungsstellung und die Organisation von Buchhaltungsprozessen bestimmt ist. Der Zugang zur Anwendung und zur digitalen Beratung ist kostenlos.",
       "freeDescription2": "Buchhaltungsdienstleistungen von autorisierten Buchhaltern (dedizierter Buchhalter, Buchhaltungsübernahme, Steuererklärungen, offizielle Berichterstattung, Jahresabschlüsse, Steuerkonformität) werden separat erbracht, ausschließlich auf Basis eines personalisierten Angebots, abhängig von Tätigkeitsbereich, Dokumentenvolumen und operativer Komplexität.",
+      "paidBadge": "Individuelles Angebot",
+      "paidTitle": "Buchhaltungsdienstleistungen von autorisierten Buchhaltern",
+      "freePrice": "0 €",
+      "paidPrice": "Auf Anfrage",
       "items": [
         {
           "title": "Beratung",
@@ -362,8 +366,8 @@ export const de: LandingDictionary = {
     },
     "hireAccountant": {
       "hero": {
-        "title": "Finden Sie den idealen Steuerberater für Ihr Unternehmen,",
-        "titleLine2": "überall",
+        "title": "Finden Sie den idealen Steuerberater für Ihr",
+        "titleLine2": "Unternehmen, überall",
         "subtitle": "Verbinden Sie sich mit verifizierten, zertifizierten und spezialisierten Steuerberatern",
         "subtitleLine2": "die mit lokalen Gesetzen, Branchenanforderungen und Geschäftsanforderungen vertraut sind.",
         "subtitleMobile": "Verbinden Sie sich mit verifizierten, zertifizierten und spezialisierten Steuerberatern .",
